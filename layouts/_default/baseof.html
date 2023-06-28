@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang | default "en" }}">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    {{ block "head" . }}{{ end }}
+
+    {{ block "favicon" . }}<link rel="icon" href="{{ .Site.Params.favicon }}">{{ end }}
+
+    {{ partial "header/styles.html" . }}
+    {{ partial "header/scripts.html" . }}
+    
+    {{ block "title" . }}<title>{{ .Title }}</title>{{ end }}
+</head>
+
+<body>
+    {{ partial "menu.html" . }}
+    
+    {{ block "nav" . }}{{ end }}
+    
+    <div class="{{ .Params.Container | default "container" }} py-4">{{ block "main" . }}{{ end }}</div>
+
+    {{ block "footer" . }}{{ end }}
+
+    {{ partial "footer/styles.html" . }}
+    {{ partial "footer/scripts.html" . }}
+</body>
+
+</html>

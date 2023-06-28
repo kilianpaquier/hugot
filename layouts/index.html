@@ -1,0 +1,7 @@
+{{ define "head" }}
+
+{{ if .Site.Params.Homepage.Overwrite }}
+{{ partial "redirect.html" (.Site.Params.Homepage.Url | relLangURL) }}
+{{ end }}
+
+{{ end }}
