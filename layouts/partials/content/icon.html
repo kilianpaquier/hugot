@@ -1,0 +1,38 @@
+{{ if eq .type "class" }}
+    {{ $style := printf "style=\"font-size: %s;\"" (.size | default "22.5px") }}
+    <i class="{{ .value }}" {{ $style | safeHTMLAttr }}
+        {{ with .name }}
+            data-bs-toggle="tooltip" data-bs-title="{{ . }}" data-bs-placement="top"
+        {{ end }}>
+    </i>
+{{ else if eq .type "svg" }}
+    {{ $size := .size | default "22.5" }}
+    {{ $oldsvg := "<svg (.*)?>((.|\n)*)</svg>" }}
+    {{ $newsvg := printf `<svg class="va-unset" height="%s" width="%s" ${1}>${2}</svg>` $size $size }}
+    
+    {{ with .name }}
+        {{ $newsvg = printf `<svg class="va-unset %s" data-bs-toggle="tooltip" data-bs-title="%s" data-bs-placement="top" height="%s" width="%s" ${1}>${2}</svg>` (. | lower) . $size $size }}
+    {{ end }}
+
+    {{ replaceRE $oldsvg $newsvg (.value | readFile) | safeHTML }}
+{{ else if eq .type "remote-svg" }}
+    {{ $size := .size | default "22.5" }}
+    {{ $oldsvg := "<svg (.*)?>((.|\n)*)</svg>" }}
+    {{ $newsvg := printf `<svg class="va-unset" height="%s" width="%s" ${1}>${2}</svg>` $size $size }}
+    
+    {{ with .name }}
+        {{ $newsvg = printf `<svg class="va-unset %s" data-bs-toggle="tooltip" data-bs-title="%s" data-bs-placement="top" height="%s" width="%s" ${1}>${2}</svg>` (. | lower) . $size $size }}
+    {{ end }}
+
+    {{ with resources.GetRemote .value }}
+        {{ replaceRE $oldsvg $newsvg .Content | safeHTML }}
+    {{ end }}
+{{ else }}
+{{ $size := .size | default "22.5" }}
+    <img src="{{ .value }}" alt="{{ .value }}"
+        style="vertical-align: unset;" class="lazyload {{ .name | lower }}"
+        width="{{ $size }}" height="{{ $size }}"
+        {{ with .name }}
+            data-bs-toggle="tooltip" data-bs-title="{{ . }}" data-bs-placement="top"
+        {{ end }}>
+{{ end }}

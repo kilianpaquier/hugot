@@ -1,0 +1,17 @@
+{{ $styleCSS := resources.Get "scss/style.scss" | toCSS (dict "outputStyle" "compressed") }}
+{{ $sliceHeaderCSS := slice $styleCSS }}
+
+{{ $bootstrapCSS := resources.GetRemote (printf "https://cdn.jsdelivr.net/npm/bootstrap@%s/dist/css/bootstrap.min.css" .Site.Params.bootstrap.version) }}
+{{ $sliceHeaderCSS = $sliceHeaderCSS | append $bootstrapCSS }}
+
+{{ range .Site.Params.header.scss }}
+    {{ $headerCSS := resources.Get . | toCSS (dict "outputStyle" "compressed") }}
+    {{ $sliceHeaderCSS = $sliceHeaderCSS | append $headerCSS }}
+{{ end }}
+{{ range .Site.Params.header.css }}
+    {{ $headerCSS := resources.Get . }}
+    {{ $sliceHeaderCSS = $sliceHeaderCSS | append $headerCSS }}
+{{ end }}
+
+{{ $bundleHeaderCSS := $sliceHeaderCSS | resources.Concat "css/bundleHeader.css" | minify | fingerprint }}
+<style>{{ $bundleHeaderCSS.Content | safeCSS }}</style>

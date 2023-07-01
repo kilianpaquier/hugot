@@ -1,0 +1,13 @@
+fr:
+  contentDir: content
+  languageName: Français
+  params:
+    description: An awesome description
+    flag: /flags/fr.svg
+
+en:
+  contentDir: content
+  languageName: English
+  params:
+    description: An awesome description
+    flag: /flags/en.svg

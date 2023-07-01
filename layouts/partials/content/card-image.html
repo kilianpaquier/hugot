@@ -1,0 +1,6 @@
+<img class="card-img-top lazyload" style="max-height: 350px;"
+    {{ if .Image }}
+    src="{{ .Image }}" alt="{{ .Image }}"
+    {{ else }}
+    src="/blog/default-image.png" alt="/blog/default-image.png"
+    {{ end }}>

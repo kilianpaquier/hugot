@@ -1,0 +1,21 @@
+{{ $bootstrapJS := resources.GetRemote (printf "https://cdn.jsdelivr.net/npm/bootstrap@%s/dist/js/bootstrap.bundle.min.js" .Site.Params.bootstrap.version) }}
+{{ $mainJS := resources.Get "js/main.js" | js.Build }}
+{{ $sliceFooterJS := slice $bootstrapJS $mainJS }}
+
+{{ if .Site.Params.instantPage.enabled }}
+    {{ $instantPageJS := resources.GetRemote (print "https://instant.page/" .Site.Params.instantPage.version) }}
+    {{ $sliceFooterJS = $sliceFooterJS | append $instantPageJS }}
+{{ end }}
+
+{{ if .Site.Params.lazysizes.enabled }}
+    {{ $lazysizesJS := resources.GetRemote "https://afarkas.github.io/lazysizes/lazysizes.min.js" }}
+    {{ $sliceFooterJS = $sliceFooterJS | append $lazysizesJS }}
+{{ end }}
+
+{{ range .Site.Params.footer.js }}
+    {{ $footerJS := resources.Get . | js.Build }}
+    {{ $sliceFooterJS = $sliceFooterJS | append $footerJS }}
+{{ end }}
+
+{{ $bundleFooterJS := $sliceFooterJS | resources.Concat "js/bundleFooter.js" | minify | fingerprint }}
+<script>{{ $bundleFooterJS.Content | safeJS }}</script>

@@ -1,0 +1,15 @@
+main:
+  - identifier: home
+    name: Home
+    url: /
+    weight: 5
+
+  - identifier: blog
+    name: Blog
+    url: /blog/
+    weight: 10
+
+  - identifier: docs
+    name: Docs
+    url: /docs/
+    weight: 15

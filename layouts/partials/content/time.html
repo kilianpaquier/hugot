@@ -1,0 +1,31 @@
+{{ $date := .Date | dateFormat ":date_long" }}
+<ul class="list-inline">
+    <!-- Publication date -->
+    <li class="list-inline-item">
+        <div class="d-flex align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="va-unset me-1" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="prefix__feather prefix__feather-calendar" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><path d="M16 2v4M8 2v4m-5 4h18"/></svg>
+            {{ $date }}
+        </div>
+    </li>
+
+    <!-- Last modification date -->
+    {{ with .File }}
+        {{ $lastmod := (os.Stat .Path).ModTime | dateFormat ":date_long" }}
+        {{ if not (eq $date $lastmod) }}
+        <li class="list-inline-item">
+            <div class="d-flex align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="va-unset me-1" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="prefix__feather prefix__feather-edit" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                {{ $lastmod }}
+            </div>
+        </li>
+        {{ end }}
+    {{ end }}
+    
+    <!-- Reading time -->
+    <li class="list-inline-item">
+        <div class="d-flex align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="va-unset me-1" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="prefix__feather prefix__feather-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            {{ T "reading_time" .ReadingTime }}
+        </div>
+    </li>
+</ul>

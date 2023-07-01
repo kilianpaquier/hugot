@@ -1,0 +1,5 @@
+include:
+  - project: $CI_INDUS_PROJECT
+    ref: $CI_INDUS_BRANCH
+    file:
+      - pipeline/go.yml

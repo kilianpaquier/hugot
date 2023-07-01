@@ -1,0 +1,3 @@
+posted: "Posted on {{ . }}"
+modified: "and modified on {{ . }}"
+reading_time: "{{ . }} min read"
