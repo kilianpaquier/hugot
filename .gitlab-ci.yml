@@ -2,9 +2,4 @@ include:
   - project: $CI_INDUS_PROJECT
     ref: $CI_INDUS_BRANCH
     file:
-      - pipeline/pages.yml
-
-pages:
-  image: golang:1.20
-  before_script:
-    - make build
+      - pipeline/go.yml
