@@ -7,18 +7,18 @@ a {
 }
 
 .bottom-end {
-    bottom: 0;
-    position: fixed !important;
-    right: 0;
+    bottom: 20px;
+    max-width: inherit;
+    padding-left: var(--bs-gutter-x);
+    padding-right: var(--bs-gutter-x);
+    position: fixed;
+    text-align: end;
+    width: 100%;
+    z-index: 100;
 }
 
-.btn-menu {
-    @extend .bottom-end;
-    
-    margin-bottom: 1rem;
-    margin-right: 1rem;
+#btn-nav {
     padding: 0.75rem !important;
-    z-index: 100;
     
     svg {
         height: 25px;
@@ -26,24 +26,18 @@ a {
     }
 }
 
-.nav-menu {
-    @extend .bottom-end;
-    
-    margin-bottom: 5rem !important;
-    margin-right: 1rem !important;
-    z-index: 100;
+#dropdown-nav {
+    display: block;
+    position: relative;
+    max-width: fit-content;
+    margin-left: auto;
 
-    >.dropdown-menu {
+    &.show {
         display: block;
-        position: relative;
-    
-        &.show {
-            display: block;
-        }
-    
-        &:not(.show) {
-            display: block;
-        }
+    }
+
+    &:not(.show) {
+        display: block;
     }
 
     .dropdown-item.on {

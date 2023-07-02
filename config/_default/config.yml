@@ -5,9 +5,15 @@ languageCode: en
 defaultContentLanguage: en
 
 # disableKinds:
+#   - "404"
+#   - home
+#   - page
+#   - robotsTXT
+#   - RSS
+#   - section
+#   - sitemap
 #   - taxonomy
-#   - terms
-#   - categories
+#   - term
 
 # ignoreErrors:
 #   - error-disable-taxonomy

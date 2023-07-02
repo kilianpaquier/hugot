@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     // Close menu (if expanded) on scroll
     document.addEventListener("scroll", () => {
-        const menu = document.getElementById("button-menu")
+        const menu = document.getElementById("btn-nav")
         if (menu.attributes.getNamedItem("aria-expanded").value === "true") {
             menu.click()
         }

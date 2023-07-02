@@ -17,11 +17,12 @@
 </head>
 
 <body>
-    {{ partial "menu.html" . }}
-    
     {{ block "nav" . }}{{ end }}
     
-    <div class="{{ .Params.Container | default "container" }} py-4">{{ block "main" . }}{{ end }}</div>
+    <div id="main-container" class="{{ .Params.Container | default "container" }} py-4">
+        {{ partial "menu.html" . }}
+        {{ block "main" . }}{{ end }}
+    </div>
 
     {{ block "footer" . }}{{ end }}
 
