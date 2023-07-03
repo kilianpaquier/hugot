@@ -20,7 +20,7 @@
     {{ block "nav" . }}{{ end }}
     
     <div id="main-container" class="{{ .Params.Container | default "container" }} py-4">
-        {{ partial "menu.html" . }}
+        {{ partial "menus/main-menu.html" . }}
         {{ block "main" . }}{{ end }}
     </div>
 

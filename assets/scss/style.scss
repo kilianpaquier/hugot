@@ -1,20 +1,31 @@
+// TWEAKING
+
+.btn-close {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3E%3Cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3E%3C/svg%3E") !important;
+    background-size: 16px !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+}
+
+.va-unset {
+    vertical-align: unset !important;
+}
+
 a {
     text-decoration: none !important;
 }
 
-:focus {
+:focus, button {
     outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 
-.bottom-end {
-    bottom: 20px;
-    max-width: inherit;
-    padding-left: var(--bs-gutter-x);
-    padding-right: var(--bs-gutter-x);
+// MENU
+
+.bottom {
     position: fixed;
-    text-align: end;
-    width: 100%;
-    z-index: 100;
+    bottom: 20px;
 }
 
 #btn-nav {
@@ -29,8 +40,6 @@ a {
 #dropdown-nav {
     display: block;
     position: relative;
-    max-width: fit-content;
-    margin-left: auto;
 
     &.show {
         display: block;
@@ -45,12 +54,7 @@ a {
     }
 }
 
-.zoom {
-    transition: transform .3s;
-    &:hover {
-        transform: scale(1.025);
-    }
-}
+// DARK MODE
 
 [data-bs-theme="dark"] {
     .carousel-indicators>button {
@@ -62,6 +66,15 @@ a {
     }
 }
 
-.va-unset {
-    vertical-align: unset !important;
+.nav-link {
+    transition: none !important; // remove animation to avoid theming transition weird behavior
+}
+
+// ANIMATIONS
+
+.zoom {
+    transition: transform .3s;
+    &:hover {
+        transform: scale(1.025);
+    }
 }
