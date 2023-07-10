@@ -1,8 +1,8 @@
-baseURL: /
-title: Awesome title
+# baseURL: /
+# title: Awesome title
 
-languageCode: en
-defaultContentLanguage: en
+# languageCode: en
+# defaultContentLanguage: en
 
 # disableKinds:
 #   - "404"
@@ -28,6 +28,7 @@ params:
   # Bottom right menu SVG
   menu:
     icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>'
+    docs: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16"><path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg>'
   
   # Dark and light mode theming
   theming: 

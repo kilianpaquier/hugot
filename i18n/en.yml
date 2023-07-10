@@ -1,3 +1,6 @@
 posted: "Posted on {{ . }}"
 modified: "and modified on {{ . }}"
 reading_time: "{{ . }} min read"
+
+docs:
+  title: "Docs navigation"

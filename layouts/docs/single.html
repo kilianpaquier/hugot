@@ -1,5 +1,49 @@
 {{ define "main" }}
-<div>
-    
+<div class="row">
+    <!-- Doc offcanvas menu -->
+    <aside class="col">
+        <div class="d-flex justify-content-end">
+            <button class="btn d-lg-none p-0 no-transition" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-docs" aria-controls="offcanvas-docs">
+                {{ .Site.Params.menu.docs | safeHTML }}
+            </button>
+        </div>
+
+        <div id="offcanvas-docs" class="offcanvas-lg offcanvas-start" tabindex="-1" aria-labelledby="offcanvas-docs-title">
+            <div class="offcanvas-header">
+                <h5 id="offcanvas-docs-title" class="offcanvas-title">{{ T "docs.title" }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#offcanvas-docs" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                {{ with .FirstSection }}
+                    <nav id="docs-nav" class="nav flex-column">
+                        {{ range .Pages }}
+                            {{ if .IsSection }}
+                                {{ partial "menus/collapse-menu.html" (dict "menu" . "current" $) }}
+                            {{ else }}
+                                <a class="nav-link mt-1" href="{{ .RelPermalink }}">{{ .Title }}</a>
+                            {{ end }}
+                        {{ end }}
+                    </nav>
+                {{ end }}
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main doc content -->
+    <div class="col-12 col-lg-9">
+        <div class="text-end">{{ partial "content/time.html" . }}</div>
+        <!-- <nav aria-label="breadcrumb" class="d-lg-none">
+            <ol class="breadcrumb">
+                {{ range .Ancestors.Reverse }}
+                    {{ if not (eq .RelPermalink "/") }}
+                        <li class="breadcrumb-item">{{ .Title }}</li>
+                    {{ end }}
+                {{ end }}
+                <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
+            </ol>
+        </nav> -->
+
+        {{ .Content }}
+    </div>
 </div>
 {{ end }}

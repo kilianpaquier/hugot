@@ -10,4 +10,28 @@ document.addEventListener("DOMContentLoaded", () => {
     // Setup tooltips
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+    // Setup docs highlights copy buttons
+    const highlights = document.getElementsByClassName("highlight")
+    for (let i = 0; i < highlights.length; i++) {
+        const highlight = highlights[i]
+
+        const button = document.createElement("button")
+        button.classList.add("btn", "btn-copy", "to-copy")
+        button.addEventListener("click", () => {
+            navigator.clipboard
+                .writeText(highlight.firstElementChild.textContent)
+                .then(() => {
+                    button.classList.replace("to-copy", "copied")
+                    setTimeout(() => button.classList.replace("copied", "to-copy"), 1000)
+                })
+                .catch((e) => {
+                    button.classList.replace("to-copy", "not-copied")
+                    setTimeout(() => button.classList.replace("not-copied", "to-copy"), 1000)
+                    console.log(e)
+                })
+        })
+
+        highlight.appendChild(button)
+    }
 })
