@@ -1,26 +1,12 @@
 <div class="d-flex justify-content-end">
     <div class="bottom text-end z-3">
         <!-- nav section -->
-        <div id="collapse-nav" class="collapse user-select-none d-print-none mb-2">
+        <div id="collapse-nav" class="collapse d-print-none mb-2">
             <ul id="dropdown-nav" class="dropdown-menu">
 
                 <!-- Main links -->
                 {{ range .Site.Menus.main }}
-                    {{ $relativeURL := .URL | relLangURL }}
-                    {{ $currentURL := $.RelPermalink | relLangURL }}
-                    {{ $versionURL := print $relativeURL $.Params.Version "/" }}
-
-                    {{ if and $.Site.Params.Homepage.Overwrite (eq .URL "/") }}
-                        {{ continue }}
-                    {{ end }}
-
-                    {{ if and $.Site.Params.versioning.enabled $.Params.Version (hasPrefix $currentURL $versionURL) }}
-                        <li><a class="dropdown-item on" href="{{ $versionURL }}">{{ .Name }}</a></li>
-                    {{ else if hasPrefix $currentURL $relativeURL }}
-                        <li><a class="dropdown-item on" href="{{ $relativeURL }}">{{ .Name }}</a></li>
-                    {{ else }}
-                        <li><a class="dropdown-item" href="{{ $relativeURL }}">{{ .Name }}</a></li>
-                    {{ end }}
+                    <li><a class="dropdown-item {{ if hasPrefix $.RelPermalink (relLangURL .Identifier) }}on{{ end }}" href="{{ relLangURL .URL }}">{{ .Name }}</a></li>
                 {{ end }}
             
 
