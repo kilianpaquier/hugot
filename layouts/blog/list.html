@@ -1,5 +1,24 @@
 {{ define "main" }}
-<div>
-    
-</div>
+    <div class="row gy-4 justify-content-center">
+        <h2 class="col-12 text-center">{{ .Title }}</h2>
+        {{ range .Pages }}
+            <div class="col-12 col-md-10 col-lg-6">
+                <div class="card zoom h-100">
+                    {{ partial "content/card-image.html" .Params }}
+                    <div class="card-body">
+                        <h5 class="card-title {{ if not .Description }}mb-0{{ end }}">{{ .Title }}</h5>
+                        
+                        {{ with .Description }}
+                            <p class="card-text mb-0">{{ . | markdownify }}</p>
+                        {{ end }}
+
+                        <a href="{{ .RelPermalink }}" class="stretched-link"></a>
+                    </div>
+                    <div class="docs-card-footer card-footer">
+                        {{ partial "content/time.html" . }}
+                    </div>
+                </div>
+            </div>
+        {{ end }}
+    </div>
 {{ end }}

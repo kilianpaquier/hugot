@@ -1,5 +1,12 @@
 {{ define "main" }}
-<div>
-    
-</div>
+    <div class="row gy-4 justify-content-center">
+        <h2 class="col-12 text-center">{{ .Title }}</h2>
+        <div class="col-12 text-end">
+            {{ partial "content/time.html" . }}
+            {{ partial "content/card-image.html" .Params }}
+        </div>
+        <div class="col-12 col-md-11 col-xl-10">
+            {{ .Content }}
+        </div>
+    </div>
 {{ end }}
