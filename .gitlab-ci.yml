@@ -3,4 +3,4 @@ include:
     ref: $CICD_INDUS_BRANCH
     file:
       - pipeline/go.yml
-      - pipeline/publish.yml
+      - pipeline/includes.yml
