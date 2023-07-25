@@ -2,5 +2,4 @@ include:
   - project: $CICD_INDUS_PROJECT
     ref: $CICD_INDUS_BRANCH
     file:
-      - pipeline/go.yml
       - pipeline/includes.yml
