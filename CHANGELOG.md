@@ -1,3 +1,10 @@
+## [1.0.2](https://gitlab.com/kilianpaquier/hugot/compare/v1.0.1...v1.0.2) (2023-11-19)
+
+
+### Chores
+
+* update go version and fix cicd project name ([303ffab](https://gitlab.com/kilianpaquier/hugot/commit/303ffabf66dd6277e65fc0d86e4057c8519eee9f))
+
 ## [1.0.1](https://gitlab.com/kilianpaquier/hugot/compare/v1.0.0...v1.0.1) (2023-07-25)
 
 
