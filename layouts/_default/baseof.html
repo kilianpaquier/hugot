@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.Language.Lang | default "en" }}">
+{{ $lang := .Site.Language.Lang | default "en" }}
+<html lang="{{ $lang }}">
 
 <head>
     <meta charset="utf-8">
@@ -18,10 +19,12 @@
 
 <body>
     {{ block "nav" . }}{{ end }}
-    
-    <div id="main-container" class="{{ .Params.Container | default "container" }} py-4">
+
+    {{ $container := .Params.Container | default "container" }}
+    <div id="main-container" class="{{ $container }} py-4">
         {{ partial "menus/main-menu.html" . }}
         {{ block "main" . }}{{ end }}
+        {{ partial "footer/footer.html" . }}
     </div>
 
     {{ block "footer" . }}{{ end }}
