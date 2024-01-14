@@ -1,3 +1,10 @@
+## [1.1.0](https://gitlab.com/kilianpaquier/hugot/compare/v1.0.2...v1.1.0) (2024-01-14)
+
+
+### Features
+
+* add bottom copyright ([62e948b](https://gitlab.com/kilianpaquier/hugot/commit/62e948b495c4634b3d3441fe35f72e98be9ad8d7))
+
 ## [1.0.2](https://gitlab.com/kilianpaquier/hugot/compare/v1.0.1...v1.0.2) (2023-11-19)
 
 
