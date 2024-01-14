@@ -1,3 +1,10 @@
+## [1.2.0](https://gitlab.com/kilianpaquier/hugot/compare/v1.1.0...v1.2.0) (2024-01-14)
+
+
+### Code Refactoring
+
+* allow disabling of footer and put footer into its own section ([30803da](https://gitlab.com/kilianpaquier/hugot/commit/30803dab63edb3c412d4f586ecfa61f2aa5c6f16))
+
 ## [1.1.0](https://gitlab.com/kilianpaquier/hugot/compare/v1.0.2...v1.1.0) (2024-01-14)
 
 
