@@ -24,13 +24,14 @@
     <div id="main-container" class="{{ $container }} py-4">
         {{ partial "menus/main-menu.html" . }}
         {{ block "main" . }}{{ end }}
-        {{ partial "footer/footer.html" . }}
     </div>
-
-    {{ block "footer" . }}{{ end }}
-
-    {{ partial "footer/styles.html" . }}
-    {{ partial "footer/scripts.html" . }}
+    
+    <div id="footer" class="{{ $container }} mb-4">
+        {{ block "footer" . }}{{ end }}
+        {{ partial "footer/footer.html" . }}
+        {{ partial "footer/styles.html" . }}
+        {{ partial "footer/scripts.html" . }}
+    </div>
 </body>
 
 </html>

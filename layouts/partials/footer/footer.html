@@ -1,3 +1,5 @@
-<div class="bottom">
-    {{ replace .Site.Copyright "{{ year }}" time.Now.Year }}
-</div>
+{{ if .Site.Params.copyright.enabled }}
+<footer>
+    <small>{{ replace .Site.Copyright "{{ year }}" time.Now.Year }}</small>
+</footer>
+{{ end }}

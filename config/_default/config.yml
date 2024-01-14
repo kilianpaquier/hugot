@@ -22,6 +22,8 @@
 
 params:
   favicon: /path/to/favicon
+  copyright:
+    enabled: false
 
   homepage:
     overwrite: false
