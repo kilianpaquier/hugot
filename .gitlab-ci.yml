@@ -1,5 +1,0 @@
-include:
-  - project: kilianpaquier/cicd
-    ref: $CICD_INDUS_BRANCH
-    file:
-      - pipeline/includes.yml
