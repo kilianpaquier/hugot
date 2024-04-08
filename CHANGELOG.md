@@ -1,3 +1,15 @@
+## [1.2.1](https://github.com/kilianpaquier/hugot/compare/v1.2.0...v1.2.1) (2024-04-08)
+
+
+### Documentation
+
+* **readme:** add simple doc ([f924814](https://github.com/kilianpaquier/hugot/commit/f9248145f9a8169aa6d1c34ce308eddc5bcec88e))
+
+
+### Chores
+
+* **deps:** bump actions/cache from 3 to 4 ([0a7b0a7](https://github.com/kilianpaquier/hugot/commit/0a7b0a7dc038effefdb62ae7c0022f013185bf7f))
+
 ## [1.2.0](https://gitlab.com/kilianpaquier/hugot/compare/v1.1.0...v1.2.0) (2024-01-14)
 
 
