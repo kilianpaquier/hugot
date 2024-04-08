@@ -1,7 +1,7 @@
 # baseURL: /
 # title: Awesome title
 
-# copyright: Copyright © {{ year }} Kilian PAQUIER
+# copyright: Copyright © {{ year }} FirstName LASTNAME
 
 # languageCode: en
 # defaultContentLanguage: en
@@ -21,16 +21,21 @@
 #   - error-disable-taxonomy
 
 params:
+  # path to website favicon
   favicon: /path/to/favicon
   copyright:
+    # defines whether the copyright section should be shown or not
     enabled: false
 
   homepage:
+    # defines whether the homepage / should be overritten and redirect to provided URL
     overwrite: false
+    # target homepage override
     url: /blog/
 
   # Bottom right menu SVG
   menu:
+    # defines the menu icon
     icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>'
     docs: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16"><path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg>'
   
@@ -49,7 +54,7 @@ params:
   # For the section, set the parameter 'version', goes the same for the page.
   versioning:
     enabled: true
-    prefix: v # The visual prefix to add on menu
+    prefix: v # visual prefix to added on menu
 
   # Great to prefetch the next page is user is gonna go to (listen to mouse events on links)
   # https://instant.page/
@@ -64,7 +69,7 @@ params:
 
   # Bootstrap cannot be disabled as it's the main front framework used
   bootstrap:
-    version: 5.3.2
+    version: 5.3.3
 
   # Additional head css files and js files. Those must be in assets folder
   header:
