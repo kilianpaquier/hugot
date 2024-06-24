@@ -4,6 +4,10 @@ ci:
   name: github
   options:
     - dependabot
+  release:
+    auto: true
+    backmerge: false
+    mode: github-token
 license: mit
 maintainers:
   - name: kilianpaquier
