@@ -1,5 +1,3 @@
 {{ if .Site.Params.copyright.enabled }}
-<footer>
-    <small>{{ replace .Site.Copyright "{{ year }}" time.Now.Year }}</small>
-</footer>
+<small>{{ replace .Site.Copyright "{{ year }}" time.Now.Year }}</small>
 {{ end }}
