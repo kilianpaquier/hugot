@@ -1,5 +1,6 @@
 {{ $date := .Date | dateFormat ":date_long" }}
 <ul class="list-inline">
+    {{ if .Date }}
     <!-- Publication date -->
     <li class="list-inline-item">
         <div class="d-flex align-items-center">
@@ -7,6 +8,7 @@
             {{ $date }}
         </div>
     </li>
+    {{ end }}
 
     <!-- Last modification date -->
     {{ with .File }}
