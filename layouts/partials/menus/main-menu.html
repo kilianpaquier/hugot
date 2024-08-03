@@ -4,15 +4,23 @@
         <div id="collapse-nav" class="collapse d-print-none mb-2">
             <ul id="dropdown-nav" class="dropdown-menu">
 
+                {{ $hasMenu := false }}
+                {{ $hasLang := and .Site.Params.languages.enabled .IsTranslated }}
+                {{ $hasVersion := and .Site.Params.versioning.enabled .Params.Version }}
+                {{ $hasTheme := .Site.Params.theming.enabled }}
+
                 <!-- Main links -->
                 {{ range .Site.Menus.main }}
+                    {{ $hasMenu = true }}
                     <li><a class="dropdown-item {{ if hasPrefix $.RelPermalink (relLangURL .Identifier) }}on{{ end }}" href="{{ relLangURL .URL }}">{{ .Name }}</a></li>
                 {{ end }}
-            
 
-                <!-- Languages links -->
-                {{ if and .Site.Params.languages.enabled .IsTranslated }}
+                {{ if and $hasMenu (or $hasLang $hasVersion $hasTheme) }}
                     <li><hr class="dropdown-divider"></li>
+                {{ end }}
+            
+                <!-- Languages links -->
+                {{ if $hasLang }}
                     <li class="dropdown dropstart">
                         <a class="dropdown-toggle dropdown-item" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             {{ .Site.Language.LanguageName }}
@@ -26,10 +34,7 @@
                 {{ end }}
 
                 <!-- Versions links -->
-                {{ if and .Site.Params.versioning.enabled .Params.Version }}
-                    {{ if not (or .Site.Params.languages.enabled .IsTranslated) }}
-                        <li><hr class="dropdown-divider"></li>
-                    {{ end }}
+                {{ if $hasVersion }}
                     <li class="dropdown dropstart">
                         <a class="dropdown-toggle dropdown-item" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             {{ .Site.Params.versioning.prefix }}{{ .Params.Version }}
@@ -47,10 +52,13 @@
                         </ul>
                     </li>
                 {{ end }}
+
+                {{ if and $hasTheme (or $hasLang $hasVersion) }}
+                    <li><hr class="dropdown-divider"></li>
+                {{ end }}
             
                 <!-- Theming button -->
-                {{ if .Site.Params.theming.enabled }}
-                    <li><hr class="dropdown-divider"></li>
+                {{ if $hasTheme }}
                     <li>
                         <button id="button-theme" class="btn btn-link text-decoration-none" type="button" style="color: unset;">
                             <!-- Both icons are hidden by default, it's /js/theming.js who's gonna take care of showing the appropriate one -->
