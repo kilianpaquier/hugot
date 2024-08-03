@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/kilianpaquier/hugot/compare/v1.2.1...v1.2.2) (2024-08-03)
+
+
+### Bug Fixes
+
+* **menu:** add divider between menu sections only when there's the previous section ([db64ff5](https://github.com/kilianpaquier/hugot/commit/db64ff50c0f089a4bad6df7ba982d110ab072b8b))
+
 ## [1.2.1](https://github.com/kilianpaquier/hugot/compare/v1.2.0...v1.2.1) (2024-04-08)
 
 
