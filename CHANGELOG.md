@@ -1,3 +1,16 @@
+## [1.2.4](https://github.com/kilianpaquier/hugot/compare/v1.2.3...v1.2.4) (2024-08-03)
+
+
+### Bug Fixes
+
+* **baseof:** ensure footer is placed at the bottom of the screen and not the page ([7003df0](https://github.com/kilianpaquier/hugot/commit/7003df0e7ead66a7e4a3fe1a7e4947387b46dd26))
+* **lists:** don't print creation date when not defined ([b800324](https://github.com/kilianpaquier/hugot/commit/b800324436fac39432ab684f080cc3793aecb705))
+
+
+### Chores
+
+* **cards:** reduce size of images ([cd003cf](https://github.com/kilianpaquier/hugot/commit/cd003cfd9d278329dcfb553937ba5a8e748d972a))
+
 ## [1.2.3](https://github.com/kilianpaquier/hugot/compare/v1.2.2...v1.2.3) (2024-08-03)
 
 
