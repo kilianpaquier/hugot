@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/kilianpaquier/hugot/compare/v1.2.2...v1.2.3) (2024-08-03)
+
+
+### Chores
+
+* **css:** split stylesheet loading into multiple groups for better reusability ([3277f66](https://github.com/kilianpaquier/hugot/commit/3277f66023bf42ab812ca4585875023ef771c4c7))
+
 ## [1.2.2](https://github.com/kilianpaquier/hugot/compare/v1.2.1...v1.2.2) (2024-08-03)
 
 
