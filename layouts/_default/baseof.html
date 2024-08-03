@@ -9,12 +9,17 @@
 
     {{ block "head" . }}{{ end }}
 
-    {{ block "favicon" . }}<link rel="icon" href="{{ .Site.Params.favicon }}">{{ end }}
+    {{ block "favicon" . }}
+        <link rel="icon" href="{{ .Site.Params.favicon }}"> <!-- default value -->
+    {{ end }}
 
+    {{ partial "header/bootstrap.min.html" . }}
     {{ partial "header/styles.html" . }}
     {{ partial "header/scripts.html" . }}
     
-    {{ block "title" . }}<title>{{ .Title }}</title>{{ end }}
+    {{ block "title" . }}
+        <title>{{ .Title }}</title> <!-- default value -->
+    {{ end }}
 </head>
 
 <body>
@@ -28,7 +33,7 @@
     
     <div id="footer" class="{{ $container }} mb-4">
         {{ block "footer" . }}{{ end }}
-        {{ partial "footer/footer.html" . }}
+        {{ partial "footer/copyright.html" . }}
         {{ partial "footer/styles.html" . }}
         {{ partial "footer/scripts.html" . }}
     </div>
