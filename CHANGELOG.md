@@ -1,3 +1,10 @@
+## [1.2.5](https://github.com/kilianpaquier/hugot/compare/v1.2.4...v1.2.5) (2024-08-09)
+
+
+### Bug Fixes
+
+* **baseof:** edit paddings for main container ([b28fe01](https://github.com/kilianpaquier/hugot/commit/b28fe015257e09c9ea08bf622f0b0f99994db81e))
+
 ## [1.2.4](https://github.com/kilianpaquier/hugot/compare/v1.2.3...v1.2.4) (2024-08-03)
 
 
