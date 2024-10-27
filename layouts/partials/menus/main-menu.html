@@ -18,7 +18,7 @@
                 {{ if and $hasMenu (or $hasLang $hasVersion $hasTheme) }}
                     <li><hr class="dropdown-divider"></li>
                 {{ end }}
-            
+
                 <!-- Languages links -->
                 {{ if $hasLang }}
                     <li class="dropdown dropstart">
@@ -56,7 +56,7 @@
                 {{ if and $hasTheme (or $hasLang $hasVersion) }}
                     <li><hr class="dropdown-divider"></li>
                 {{ end }}
-            
+
                 <!-- Theming button -->
                 {{ if $hasTheme }}
                     <li>
@@ -70,7 +70,7 @@
             </ul>
         </div>
 
-        <button id="btn-nav" class="btn btn-primary shadow rounded-circle d-print-none" type="button" 
+        <button id="btn-nav" class="btn btn-primary shadow rounded-circle d-print-none" type="button"
             data-bs-toggle="collapse" data-bs-target="#collapse-nav" aria-expanded="false" aria-controls="collapse-nav">
             {{ .Site.Params.menu.icon | safeHTML }}
         </button>

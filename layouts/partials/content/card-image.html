@@ -1,6 +1,6 @@
 <img class="card-img-top lazyload"
-    {{ if .Image }}
-        src="{{ .Image }}" alt="{{ .Image }}"
+    {{ if .src }}
+        src="{{ .src }}" height='{{ .height | default "200px" }}' {{ if .width }}width="{{ .width }}"{{ end }} alt="{{ .src }}"
     {{ else }}
-        src="/blog/default-image.png" alt="/blog/default-image.png"
+        src="/blog/default-image.png" height='{{ .height | default "200px" }}' {{ if .width }}width="{{ .width }}"{{ end }} alt="/blog/default-image.png"
     {{ end }}>

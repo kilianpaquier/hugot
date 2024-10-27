@@ -2,12 +2,12 @@
     <div class="row gy-4 justify-content-center">
         <h2 class="col-12 text-center">{{ .Title }}</h2>
         {{ range .Pages }}
-            <div class="col-12 col-md-10 col-lg-6">
+            <div class="col-12 col-md-10 col-lg-8 col-xl-6">
                 <div class="card zoom h-100">
-                    {{ partial "content/card-image.html" .Params }}
+                    {{ partial "content/card-image.html" .Params.image }}
                     <div class="card-body">
                         <h5 class="card-title {{ if not .Description }}mb-0{{ end }}">{{ .Title }}</h5>
-                        
+
                         {{ with .Description }}
                             <p class="card-text mb-0">{{ . | markdownify }}</p>
                         {{ end }}

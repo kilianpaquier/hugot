@@ -6,7 +6,7 @@
                 <div class="card zoom h-100">
                     <div class="card-body">
                         <h5 class="card-title {{ if not .Description }}mb-0{{ end }}">{{ .Title }}</h5>
-                        
+
                         {{ with .Description }}
                             <p class="card-text mb-0">{{ . | markdownify }}</p>
                         {{ end }}

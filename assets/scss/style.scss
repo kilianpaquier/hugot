@@ -62,18 +62,18 @@ figure {
     ::-webkit-scrollbar {
         height: 5px;
     }
-    
+
     /* Track */
     ::-webkit-scrollbar-track {
         background: transparent;
     }
-    
+
     /* Handle */
     ::-webkit-scrollbar-thumb {
         background: lightgrey;
         border-radius: 7.5px;
     }
-    
+
     /* Handle on hover */
     ::-webkit-scrollbar-thumb:hover {
         background: lightgrey;
@@ -129,7 +129,7 @@ figure {
 
 #btn-nav {
     padding: 0.75rem !important;
-    
+
     svg {
         height: 25px;
         width: 25px;
