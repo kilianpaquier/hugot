@@ -1,3 +1,9 @@
+## [1.3.0](https://github.com/kilianpaquier/hugot/compare/v1.2.5...v1.3.0) (2024-10-27)
+
+### 🚀 Features
+
+* **blog:** reduce images size and allow card-image to take height and width ([84d5804](https://github.com/kilianpaquier/hugot/commit/84d580436e3c02dfece60f35a08e0627a03f2fba))
+
 ## [1.2.5](https://github.com/kilianpaquier/hugot/compare/v1.2.4...v1.2.5) (2024-08-09)
 
 
