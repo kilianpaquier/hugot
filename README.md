@@ -1,5 +1,3 @@
-<!-- This file is safe to edit. Once it exists it will not be overwritten. -->
-
 # hugot <!-- omit in toc -->
 
 <p align="center">
