@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/kilianpaquier/hugot/compare/v1.3.0...v1.3.1) (2025-02-24)
+
+### Chores
+
+* add pre-commit configuration ([0eee1cb](https://github.com/kilianpaquier/hugot/commit/0eee1cbe49f2cb5def0bc767163e8f5d09842784))
+* **go:** upgrade go version ([9cd8fe9](https://github.com/kilianpaquier/hugot/commit/9cd8fe97d878d2dd2883cf0a6ce7f8099cccaffd))
+
 ## [1.3.0](https://github.com/kilianpaquier/hugot/compare/v1.2.5...v1.3.0) (2024-10-27)
 
 ### 🚀 Features
