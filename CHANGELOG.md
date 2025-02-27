@@ -1,3 +1,9 @@
+## [1.4.0](https://github.com/kilianpaquier/hugot/compare/v1.3.1...v1.4.0) (2025-02-27)
+
+### Features
+
+* **menu:** allow enabling or disabling menu to get a simple theme with just bootstrap and optimizations ([e470f5a](https://github.com/kilianpaquier/hugot/commit/e470f5a81de14777696528e7c08d05b20a016b99))
+
 ## [1.3.1](https://github.com/kilianpaquier/hugot/compare/v1.3.0...v1.3.1) (2025-02-24)
 
 ### Chores
