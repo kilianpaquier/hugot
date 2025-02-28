@@ -20,6 +20,8 @@
 # ignoreErrors:
 #   - error-disable-taxonomy
 
+enableGitInfo: true
+
 params:
   # path to website favicon
   favicon: /path/to/favicon

@@ -11,16 +11,14 @@
     {{ end }}
 
     <!-- Last modification date -->
-    {{ with .File }}
-        {{ $lastmod := (os.Stat .Path).ModTime | dateFormat ":date_long" }}
-        {{ if not (eq $date $lastmod) }}
-        <li class="list-inline-item">
-            <div class="d-flex align-items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="va-unset me-1" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="prefix__feather prefix__feather-edit" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-                {{ $lastmod }}
-            </div>
-        </li>
-        {{ end }}
+    {{ $lastmod := .Lastmod | dateFormat ":date_long" }}
+    {{ if not (eq $date $lastmod) }}
+    <li class="list-inline-item">
+        <div class="d-flex align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="va-unset me-1" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="prefix__feather prefix__feather-edit" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            {{ $lastmod }}
+        </div>
+    </li>
     {{ end }}
 
     <!-- Reading time -->
