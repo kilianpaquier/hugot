@@ -1,3 +1,9 @@
+## [1.4.1](https://github.com/kilianpaquier/hugot/compare/v1.4.0...v1.4.1) (2025-02-28)
+
+### Bug Fixes
+
+* **time:** use .Lastmod with GitInfo to get a better date when working with CI ([440648a](https://github.com/kilianpaquier/hugot/commit/440648a1e0b05fbcd31d403114ac2ff522a652e2))
+
 ## [1.4.0](https://github.com/kilianpaquier/hugot/compare/v1.3.1...v1.4.0) (2025-02-27)
 
 ### Features
