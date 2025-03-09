@@ -6,8 +6,6 @@ copyright: Copyright © 2025 Kilian PAQUIER
 languageCode: en
 defaultContentLanguage: en
 
-enableGitInfo: true
-
 theme:
   - github.com/kilianpaquier/hugot
 

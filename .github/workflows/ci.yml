@@ -131,7 +131,7 @@ jobs:
           extended: true
       - run: |-
           [ -d "exampleSite" ] && cd "exampleSite"
-          hugo --gc --minify --destination dist
+          hugo --gc --enableGitInfo --minify --destination "${GITHUB_WORKSPACE}/dist"
         env:
           VERSION: ${{ needs.version.outputs.version }}
       - uses: actions/upload-artifact@v4
