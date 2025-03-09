@@ -30,7 +30,7 @@
     </main>
 
     {{ block "footer" . }}
-    <footer id="footer" class="border-top py-4">
+    <footer id="footer" class="border-top">
         {{ $class := .Params.Class.Footer | default .Site.Params.Class.Footer }}
         <div class="{{ $class }}">
             {{ if .Site.Copyright }}

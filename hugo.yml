@@ -14,8 +14,8 @@ params:
   # can be replaced / removed, however,
   # without at least one HTML tag with a container class, it may introduce bootstrap weird gutters behavior in home / blog
   class:
-    main: container
-    footer: container
+    main: container py-4
+    footer: container py-4
 
   homepage:
     # defines whether the homepage / should be overritten and redirect to provided URL
