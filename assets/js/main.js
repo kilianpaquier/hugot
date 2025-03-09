@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
-    // Setup docs highlights copy buttons
+    // Setup highlights copy buttons
     const highlights = document.getElementsByClassName("highlight")
     for (let i = 0; i < highlights.length; i++) {
         const highlight = highlights[i]
