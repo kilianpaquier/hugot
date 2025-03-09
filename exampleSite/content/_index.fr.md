@@ -115,4 +115,4 @@ params:
 
 #### Configuration par défaut
 
-See https://github.com/kilianpaquier/hugot/blob/main/hugo.yaml.
+Voir [ici](https://github.com/kilianpaquier/hugot/blob/main/hugo.yaml).

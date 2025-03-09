@@ -110,4 +110,4 @@ params:
 
 #### Default configuration
 
-See https://github.com/kilianpaquier/hugot/blob/main/hugo.yaml.
+See [here](https://github.com/kilianpaquier/hugot/blob/main/hugo.yaml).
