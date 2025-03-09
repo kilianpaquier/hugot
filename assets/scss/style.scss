@@ -111,7 +111,7 @@ figure {
 .bottom {
     position: fixed;
     z-index: 3;
-    bottom: calc(var(--bs-gutter-x)* .5);
+    bottom: 0.75rem;
 }
 
 #btn-menu-nav {
@@ -132,7 +132,7 @@ figure {
 
 .bottom-scrolltop {
     @extend .bottom;
-    bottom: calc(var(--bs-gutter-x)* 2.75);
+    bottom: 4.125rem;
     padding: 0 0.475rem;
 }
 
