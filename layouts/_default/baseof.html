@@ -10,7 +10,7 @@
     {{ block "head" . }}{{ end }}
 
     {{ block "favicon" . }}
-        <link rel="icon" href="{{ .Site.Params.favicon }}"> <!-- default value -->
+    <link rel="icon" href="{{ .Site.Params.favicon | safeURL }}"> <!-- default value -->
     {{ end }}
 
     {{ partial "header/bootstrap.min.html" . }}
@@ -18,27 +18,29 @@
     {{ partial "header/scripts.html" . }}
 
     {{ block "title" . }}
-        <title>{{ .Title }}</title> <!-- default value -->
+    <title>{{ .Title }} - {{ .Site.Title }}</title> <!-- default value -->
     {{ end }}
 </head>
 
 <body class="m-0 h-100 d-flex flex-column">
-    {{ $container := .Params.Container | default "container" }}
-    <div class="{{ $container }} pt-5 pb-3 flex-grow-1 d-flex flex-column">
-        {{ if .Site.Params.menu.enabled }}{{ partial "menus/main-menu.html" . }}{{ end }}
+    {{ $class := .Params.Class.Main | default .Site.Params.Class.Main }}
+    <main id="main" class="{{ $class }} d-flex flex-column flex-grow-1">
+        {{ partial "menus/bottom.html" . }}
+        {{ block "main" . }}{{ end }}
+    </main>
 
-        <main class="flex-grow-1">
-            {{ block "main" . }}{{ end }}
-        </main>
+    {{ block "footer" . }}
+    <footer id="footer" class="border-top py-4">
+        {{ $class := .Params.Class.Footer | default .Site.Params.Class.Footer }}
+        <div class="{{ $class }}">
+            {{ if .Site.Copyright }}
+            <small>{{ .Site.Copyright }}</small>
+            {{ end }}
+        </div>
+    </footer>
+    {{ end }}
 
-        <footer class="mt-3 flex-shrink-1">
-            {{ block "footer" . }}{{ end }}
-
-            {{ partial "footer/copyright.html" . }}
-            {{ partial "footer/styles.html" . }}
-            {{ partial "footer/scripts.html" . }}
-        </footer>
-    </div>
+    {{ partial "footer/scripts.html" . }}
 </body>
 
 </html>

@@ -1,12 +1,8 @@
 ---
-categories: []
-container:
-contributors: []
 date: {{ .Date | dateFormat "2006-01-02" }}
 description:
-layout:
-tags: []
-title: {{ replace .Name "-" " " | title }}
+title: {{ replace .File.ContentBaseName "-" " " | title }}
 version:
-weight:
 ---
+
+# {{ replace .File.ContentBaseName "-" " " | title }}

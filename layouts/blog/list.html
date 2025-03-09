@@ -1,24 +1,46 @@
-{{ define "main" }}
-    <div class="row gy-4 justify-content-center">
-        <h2 class="col-12 text-center">{{ .Title }}</h2>
-        {{ range .Pages }}
-            <div class="col-12 col-md-10 col-lg-8 col-xl-6">
-                <div class="card zoom h-100">
-                    {{ partial "content/card-image.html" .Params.image }}
-                    <div class="card-body">
-                        <h5 class="card-title {{ if not .Description }}mb-0{{ end }}">{{ .Title }}</h5>
+{{/* card is one blog page (a regular page in Hugo vocabulary) */}}
+{{ define "card" }}
+<div class="col-12 col-md-10 col-lg-8 col-xl-6">
+    <div class="card zoom h-100">
+        {{ partial "content/card-image.html" .Params.image }}
+        <div class="card-body">
+            <h5 class="card-title {{ if not .Description }}mb-0{{ end }}">{{ .Title }}</h5>
 
-                        {{ with .Description }}
-                            <p class="card-text mb-0">{{ . | markdownify }}</p>
-                        {{ end }}
+            {{ with .Description }}
+                <p class="card-text mb-0">{{ . | markdownify }}</p>
+            {{ end }}
 
-                        <a href="{{ .RelPermalink }}" class="stretched-link"></a>
-                    </div>
-                    <div class="docs-card-footer card-footer">
-                        {{ partial "content/time.html" . }}
-                    </div>
-                </div>
-            </div>
-        {{ end }}
+            <a href="{{ .RelPermalink }}" class="stretched-link"></a>
+        </div>
+        <div class="card-footer">
+            {{ partial "content/time.html" . }}
+        </div>
     </div>
+</div>
+{{ end }}
+
+{{/* cards takes care of flattining all sub-blogs sections while only showing the latest version of a given blog page */}}
+{{ define "cards" }}
+
+{{ if .IsSection }}
+{{ $latest := index .Pages 0 }}
+{{ range .Pages }}{{ if lt $latest.Params.Version .Params.Version }}{{ $latest = . }}{{ end }}{{ end }}
+{{ if $latest.Params.Version }}
+    {{ template "card" $latest }}
+{{ else }}
+    {{ range .Pages }}
+        {{ template "cards" . }}
+    {{ end }}
+{{ end }}
+
+{{ else }}
+    {{ template "card" . }}
+{{ end }}
+{{ end }}
+
+{{ define "main" }}
+<div class="row gy-4 py-4 justify-content-center">
+    <h2 class="col-12 text-center">{{ .Title }}</h2>
+    {{ template "cards" . }}
+</div>
 {{ end }}

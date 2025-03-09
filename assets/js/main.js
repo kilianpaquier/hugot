@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     // Close menu (if expanded) on scroll
     document.addEventListener("scroll", () => {
-        const menu = document.getElementById("btn-nav")
+        const menu = document.getElementById("btn-menu-nav")
         if (menu.attributes.getNamedItem("aria-expanded").value === "true") {
             menu.click()
         }
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const highlight = highlights[i]
 
         const button = document.createElement("button")
-        button.classList.add("btn", "btn-copy", "to-copy")
+        button.classList.add("btn", "btn-copy", "btn-transparent", "to-copy")
         button.addEventListener("click", () => {
             navigator.clipboard
                 .writeText(highlight.firstElementChild.textContent)

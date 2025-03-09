@@ -2,12 +2,13 @@
 {{ $sliceHeaderCSS := slice $styleCSS }}
 
 {{ range .Site.Params.header.scss }}
-    {{ $headerCSS := resources.Get . | toCSS (dict "outputStyle" "compressed") }}
-    {{ $sliceHeaderCSS = $sliceHeaderCSS | append $headerCSS }}
+{{ $headerCSS := resources.Get . | toCSS (dict "outputStyle" "compressed") }}
+{{ $sliceHeaderCSS = $sliceHeaderCSS | append $headerCSS }}
 {{ end }}
+
 {{ range .Site.Params.header.css }}
-    {{ $headerCSS := resources.Get . }}
-    {{ $sliceHeaderCSS = $sliceHeaderCSS | append $headerCSS }}
+{{ $headerCSS := resources.Get . }}
+{{ $sliceHeaderCSS = $sliceHeaderCSS | append $headerCSS }}
 {{ end }}
 
 {{ $bundleCustomCSS := $sliceHeaderCSS | resources.Concat "css/bundleCustom.css" | minify | fingerprint }}

@@ -1,0 +1,12 @@
+main:
+  - name: Home
+    url: /
+    weight: 5
+
+  - name: Blog
+    url: /blog/
+    weight: 10
+
+  - name: Use case
+    url: https://kilianpaquier.com
+    weight: 15

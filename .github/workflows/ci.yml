@@ -129,7 +129,9 @@ jobs:
         with:
           hugo-version: latest
           extended: true
-      - run: hugo --gc --minify --destination dist
+      - run: |-
+          [ -d "exampleSite" ] && cd "exampleSite"
+          hugo --gc --minify --destination dist
         env:
           VERSION: ${{ needs.version.outputs.version }}
       - uses: actions/upload-artifact@v4
@@ -138,15 +140,54 @@ jobs:
           path: dist
           retention-days: 1
 
+  netlify:
+    name: Netlify
+    runs-on: ubuntu-latest
+    if: ${{ (github.event_name == 'push' && github.ref_protected) || github.event_name == 'workflow_dispatch' }}
+    needs:
+      - hugo-build
+    environment:
+      name: netlify
+      url: ${{ steps.netlify.outputs.deploy-url }}
+    permissions:
+      deployments: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: build
+          path: dist
+      # https://github.com/marketplace/actions/netlify-actions
+      - id: branch_sha
+        run: |
+          echo "branch_sha=$(echo "${GITHUB_REF_NAME}" | sha256sum | cut -c -8)" >> $GITHUB_OUTPUT
+      - id: netlify
+        uses: nwtgck/actions-netlify@v3
+        with:
+          alias: ${{ steps.branch_sha.outputs.branch_sha }}
+          deploy-message: ${{ github.ref_name }}
+          enable-commit-comment: false
+          enable-commit-status: false
+          github-deployment-environment: netlify
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          netlify-config-path: netlify.toml
+          production-branch: ${{ github.event.repository.default_branch }}
+          publish-dir: dist
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
   release:
     name: Release
     runs-on: ubuntu-latest
-    if: ${{ github.event_name != 'pull_request' && github.ref_protected }}
+    if: ${{ github.event_name == 'workflow_dispatch' && github.ref_protected }}
     environment:
       name: release
       url: ${{ steps.environment_url.outputs.environment_url }}
     needs:
       - hugo-build
+      - netlify
     permissions:
       contents: write
       issues: write

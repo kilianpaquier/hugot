@@ -1,0 +1,112 @@
+{{ if .Site.Params.scrolltop.enabled }}
+{{ $bottomscroll := compare.Conditional .Site.Params.menu.enabled "bottom-scrolltop" "bottom" }}
+<!-- Scroll To Top -->
+<nav class="{{ $bottomscroll }} align-self-end">
+    <!-- scrolltop button -->
+    <button id="btn-scrolltop" class="btn btn-primary shadow rounded-circle d-print-none d-none" type="button">
+        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v13m0-13 4 4m-4-4-4 4"/>
+        </svg>
+    </button>
+</nav>
+{{ end }}
+
+{{ if .Site.Params.menu.enabled }}
+<!-- Main menu -->
+<nav class="bottom align-self-end text-end">
+    <!-- nav section -->
+    <div id="collapse-menu-nav" class="collapse d-print-none mb-2">
+        <ul class="dropdown-menu dropdown-menu-nav">
+
+            {{ $hasMenu := false }}
+            {{ $hasLang := .IsTranslated }}
+            {{ $hasVersion := .Params.Version }}
+            {{ $hasTheme := .Site.Params.theming.enabled }}
+
+            <!-- Main links -->
+            {{ range .Site.Menus.main }}
+                {{ $hasMenu = true }}
+                {{ $current := hasPrefix $.RelPermalink (relLangURL .URL) }}
+                {{ $page := $.Site.GetPage .URL }}
+                <li>
+                    <a class="dropdown-item" href="{{ relLangURL .URL }}"
+                        {{ if not $page }}target="_blank"{{ end }}>
+                        {{ .Name }}
+                    </a>
+                </li>
+            {{ end }}
+
+            {{ if and $hasMenu (or $hasLang $hasVersion $hasTheme) }}
+                <li><hr class="dropdown-divider"></li>
+            {{ end }}
+
+            <!-- Languages links -->
+            {{ if $hasLang }}
+                <li class="dropdown dropstart">
+                    <a class="dropdown-toggle dropdown-item" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ .Site.Language.LanguageName }}
+                    </a>
+                    <ul class="dropdown-menu me-1">
+                        {{ range .Translations }}
+                            <li><a class="dropdown-item" href="{{ .RelPermalink }}">{{ .Language.LanguageName }}</a></li>
+                        {{ end }}
+                    </ul>
+                </li>
+            {{ end }}
+
+            <!-- Versions links -->
+            {{ if $hasVersion }}
+                <li class="dropdown dropstart">
+                    <a class="dropdown-toggle dropdown-item" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ .Site.Params.versioning.prefix }}{{ .Params.Version }}
+                    </a>
+                    <ul class="dropdown-menu me-1">
+                        {{ if .IsPage }}
+                            <!-- Range over pages under parent section -->
+                            {{ range (where .Parent.RegularPages ".Params.Version" "!=" nil) | intersect (where .Parent.RegularPages ".Params.Version" "!=" $.Params.Version) }}
+                            <li><a class="dropdown-item" href="{{ .RelPermalink }}">{{ .Site.Params.versioning.prefix }}{{ .Params.Version }}</a></li>
+                            {{ end }}
+                        {{ end }}
+                    </ul>
+                </li>
+            {{ end }}
+
+            {{ if and $hasTheme (or $hasLang $hasVersion) }}
+                <li><hr class="dropdown-divider"></li>
+            {{ end }}
+
+            <!-- Theming button -->
+            {{ if $hasTheme }}
+                <li>
+                    <button id="btn-theme" class="btn btn-link text-decoration-none" type="button" style="color: unset;">
+                        <!-- Icons are hidden by default, it's /js/theming.js who's gonna take care of showing the appropriate one -->
+                        <i id="icon-theme-moon" class="d-none">
+                            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 21a9 9 0 0 1-.5-17.986V3c-.354.966-.5 1.911-.5 3a9 9 0 0 0 9 9c.239 0 .254.018.488 0A9.004 9.004 0 0 1 12 21Z"/>
+                            </svg>
+                        </i>
+                        <i id="icon-theme-sun" class="d-none">
+                            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5V3m0 18v-2M7.05 7.05 5.636 5.636m12.728 12.728L16.95 16.95M5 12H3m18 0h-2M7.05 16.95l-1.414 1.414M18.364 5.636 16.95 7.05M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"/>
+                            </svg>
+                        </i>
+                        <i id="icon-theme-system" class="d-none">
+                            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                            </svg>
+                        </i>
+                    </button>
+                </li>
+            {{ end }}
+        </ul>
+    </div>
+
+    <!-- nav bottom menu -->
+    <button id="btn-menu-nav" class="btn btn-primary shadow rounded-circle d-print-none" type="button"
+        data-bs-toggle="collapse" data-bs-target="#collapse-menu-nav" aria-expanded="false" aria-controls="collapse-menu-nav">
+        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14"/>
+        </svg>
+    </button>
+</nav>
+{{ end }}

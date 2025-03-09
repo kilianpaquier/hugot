@@ -1,7 +1,14 @@
 {{ define "head" }}
-
-{{ if .Site.Params.Homepage.Overwrite }}
+{{ if .Site.Params.Homepage.Redirect }}
 {{ partial "redirect.html" (.Site.Params.Homepage.Url | relLangURL) }}
 {{ end }}
+{{ end }}
 
+{{ define "main" }}
+<div class="row gy-4 pt-4">
+    <h2 class="col-12 text-center">{{ .Title }}</h2>
+    <div class="col-12">
+        {{ .Content }}
+    </div>
+</div>
 {{ end }}

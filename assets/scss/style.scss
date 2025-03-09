@@ -1,17 +1,5 @@
 // TWEAKING
 
-html, body {
-    margin: 0;
-    height: 100%;
-}
-
-.btn-close {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3E%3Cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3E%3C/svg%3E") !important;
-    background-size: 16px !important;
-    background-repeat: no-repeat !important;
-    background-position: center !important;
-}
-
 .va-unset {
     vertical-align: unset !important;
 }
@@ -20,26 +8,21 @@ a {
     text-decoration: none !important;
 }
 
+img, svg {
+    vertical-align: text-top;
+}
+
 :focus, button {
     outline: none !important;
-    border: none !important;
     box-shadow: none !important;
 }
 
-// DOCS
-
-#docs-nav {
-    a.nav-link, .nav-item.active {
-        padding: 0;
-    }
+.btn-transparent {
+    border: none !important;
 }
 
-.nav-section {
-    color: inherit; // remove primary color from docs section titles
-}
-
-.docs-card-footer .list-inline {
-    margin-bottom: 0;
+.list-inline, .breadcrumb {
+    margin-bottom: 0.5rem;
 }
 
 // BLOG
@@ -53,6 +36,10 @@ figure {
         max-width: 100%;
         max-height: 500px;
     }
+}
+
+.card-footer .list-inline {
+    margin-bottom: 0;
 }
 
 // MARKDOWN
@@ -123,34 +110,34 @@ figure {
 
 .bottom {
     position: fixed;
-    bottom: 20px;
     z-index: 3;
+    bottom: calc(var(--bs-gutter-x)* .5);
 }
 
-#btn-nav {
-    padding: 0.75rem !important;
-
-    svg {
-        height: 25px;
-        width: 25px;
-    }
+#btn-menu-nav {
+    border: none;
+    padding: 0.5rem;
 }
 
-#dropdown-nav {
+.dropdown-menu-nav {
     display: block;
     position: relative;
-
-    &.show {
-        display: block;
-    }
-
-    &:not(.show) {
-        display: block;
-    }
 
     .dropdown-item.on {
         font-weight: 600;
     }
+}
+
+// SCROLLTOP
+
+.bottom-scrolltop {
+    @extend .bottom;
+    bottom: calc(var(--bs-gutter-x)* 2.75);
+    padding: 0 0.475rem;
+}
+
+#btn-scrolltop {
+    padding: 0.1rem;
 }
 
 // DARK MODE

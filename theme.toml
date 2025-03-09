@@ -2,13 +2,23 @@
 # See https://github.com/gohugoio/hugoThemes#themetoml for an example
 
 name = "Hugot"
+description = "Simple Hugo theme with various features"
+
 license = "MIT"
 licenselink = "https://raw.githubusercontent.com/kilianpaquier/hugot/main/LICENSE"
-description = ""
-homepage = "https://kilianpaquier.com/"
-tags = []
-features = ["blog", "docs"]
-min_version = "0.41.0"
+
+demosite = "https://hugot.netlify.app"
+homepage = "https://github.com/kilianpaquier/hugot"
+
+tags = ["blog"]
+features = [
+  "blog",
+  "bootstrap style",
+  "bottom menu",
+  "page versioning",
+  "scroll to top",
+  "theming",
+]
 
 [author]
   name = "Kilian PAQUIER"

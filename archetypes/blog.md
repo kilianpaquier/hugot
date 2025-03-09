@@ -1,13 +1,9 @@
 ---
-categories: []
-container:
-contributors: []
 date: {{ .Date | dateFormat "2006-01-02" }}
 description:
 image:
-layout:
-tags: []
-title: {{ replace .Name "-" " " | title }}
+  src: /blog/default-image.png
+  height: 200px
+title: {{ replace .File.ContentBaseName "-" " " | title }}
 version:
-weight:
 ---
