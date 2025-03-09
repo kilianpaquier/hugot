@@ -129,8 +129,8 @@ jobs:
         with:
           hugo-version: latest
           extended: true
-      - run: |-
-          [ -d "exampleSite" ] && cd "exampleSite"
+      - run: |
+          [ -d exampleSite ] && cd exampleSite
           hugo --gc --enableGitInfo --minify --destination "${GITHUB_WORKSPACE}/dist"
         env:
           VERSION: ${{ needs.version.outputs.version }}
@@ -162,6 +162,9 @@ jobs:
       - id: branch_sha
         run: |
           echo "branch_sha=$(echo "${GITHUB_REF_NAME}" | sha256sum | cut -c -8)" >> $GITHUB_OUTPUT
+      - id: config
+        run: |
+          [ -f netlify.toml ] && echo "path=netlify.toml" >> $GITHUB_OUTPUT
       - id: netlify
         uses: nwtgck/actions-netlify@v3
         with:
@@ -171,7 +174,7 @@ jobs:
           enable-commit-status: false
           github-deployment-environment: netlify
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          netlify-config-path: netlify.toml
+          netlify-config-path: ${{ steps.config.outputs.path }}
           production-branch: ${{ github.event.repository.default_branch }}
           publish-dir: dist
         env:
