@@ -1,4 +1,0 @@
-{{ $utilitiesCSS := resources.GetRemote (printf "https://cdn.jsdelivr.net/npm/bootstrap@%s/dist/css/bootstrap-utilities.min.css" .Site.Params.bootstrap.version) }}
-
-{{ $bundleUtilitiesCSS := $utilitiesCSS | minify | fingerprint }}
-<style>{{ $bundleUtilitiesCSS.Content | safeCSS }}</style>

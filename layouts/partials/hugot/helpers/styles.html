@@ -1,0 +1,44 @@
+{{ $merged := slice }}
+
+{{ range .css }}
+    {{ $url := . }}
+    {{ with try (resources.GetRemote $url) }}
+        {{ with .Err }}
+            {{ with try (resources.Get $url) }}
+                {{ with .Err }}
+                    {{ errorf "failed to get %s: %s" $url . }}
+                {{ else with .Value }}
+                    {{ $merged = $merged | append . }}
+                {{ end }}
+            {{ end }}
+        {{ else with .Value }}
+            {{ $merged = $merged | append . }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+
+{{ range .scss }}
+    {{ $url := . }}
+    {{ $opts := dict
+        "enableSourceMap" (not hugo.IsProduction)
+        "outputStyle" (cond hugo.IsProduction "compressed" "expanded")
+        "targetPath" (printf "css/%s.css" (path.BaseName $url))
+        "transpiler" "libsass"
+    }}
+
+    {{ with try (resources.GetRemote $url) }}
+        {{ with .Err }}
+            {{ with try (resources.Get $url) }}
+                {{ with .Err }}
+                    {{ errorf "failed to get %s: %s" $url . }}
+                {{ else with .Value }}
+                    {{ $merged = $merged | append (. | toCSS $opts) }}
+                {{ end }}
+            {{ end }}
+        {{ else with .Value }}
+            {{ $merged = $merged | append (. | toCSS $opts) }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+
+{{ return $merged }}

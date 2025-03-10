@@ -3,44 +3,23 @@
 <html lang="{{ $lang }}" class="m-0 h-100">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     {{ block "head" . }}{{ end }}
-
-    {{ block "favicon" . }}
-    <link rel="icon" href="{{ .Site.Params.favicon | safeURL }}"> <!-- default value -->
-    {{ end }}
-
-    {{ partial "header/bootstrap.min.html" . }}
-    {{ partial "header/styles.html" . }}
-    {{ partial "header/scripts.html" . }}
-
-    {{ block "title" . }}
-    <title>{{ .Title }} - {{ .Site.Title }}</title> <!-- default value -->
-    {{ end }}
+    {{ partial "hugot/head.html" . }}
+    {{ partial "hugot/internal/head.html" . }}
 </head>
 
 <body class="m-0 h-100 d-flex flex-column">
     {{ $class := .Params.Class.Main | default .Site.Params.Class.Main }}
     <main id="main" class="{{ $class }} d-flex flex-column flex-grow-1">
-        {{ partial "menus/bottom.html" . }}
+        {{ partial "hugot/parts/scrolltop.html" . }}
+        {{ partial "hugot/parts/menu.html" . }}
+
         {{ block "main" . }}{{ end }}
     </main>
 
-    {{ block "footer" . }}
-    <footer id="footer" class="border-top">
-        {{ $class := .Params.Class.Footer | default .Site.Params.Class.Footer }}
-        <div class="{{ $class }}">
-            {{ if .Site.Copyright }}
-            <small>{{ .Site.Copyright }}</small>
-            {{ end }}
-        </div>
-    </footer>
-    {{ end }}
-
-    {{ partial "footer/scripts.html" . }}
+    {{ partial "hugot/footer.html" . }}
 </body>
+
+{{ partial "hugot/internal/end.html" . }}
 
 </html>

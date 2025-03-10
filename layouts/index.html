@@ -1,6 +1,6 @@
 {{ define "head" }}
 {{ if .Site.Params.Homepage.Redirect }}
-{{ partial "redirect.html" (.Site.Params.Homepage.Url | relLangURL) }}
+{{ partial "hugot/helpers/redirect.html" (relLangURL .Site.Params.Homepage.Url) }}
 {{ end }}
 {{ end }}
 

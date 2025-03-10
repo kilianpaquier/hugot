@@ -1,17 +1,4 @@
-{{ if .Site.Params.scrolltop.enabled }}
-{{ $bottomscroll := compare.Conditional .Site.Params.menu.enabled "bottom-scrolltop" "bottom" }}
-<!-- Scroll To Top -->
-<nav class="{{ $bottomscroll }} align-self-end">
-    <!-- scrolltop button -->
-    <button id="btn-scrolltop" class="btn btn-primary shadow rounded-circle d-print-none d-none" type="button">
-        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v13m0-13 4 4m-4-4-4 4"/>
-        </svg>
-    </button>
-</nav>
-{{ end }}
-
-{{ if .Site.Params.menu.enabled }}
+{{ if not .Params.menu.disabled | default (not .Site.Params.menu.disabled) }}
 <!-- Main menu -->
 <nav class="bottom align-self-end text-end">
     <!-- nav section -->
@@ -21,12 +8,12 @@
             {{ $hasMenu := false }}
             {{ $hasLang := .IsTranslated }}
             {{ $hasVersion := .Params.Version }}
-            {{ $hasTheme := .Site.Params.theming.enabled }}
+            {{ $hasTheme := not .Params.theming.disabled | default (not .Site.Params.theming.disabled) }}
 
             <!-- Main links -->
             {{ range .Site.Menus.main }}
                 {{ $hasMenu = true }}
-                {{ $current := hasPrefix $.RelPermalink (relLangURL .URL) }}
+                <!-- {{ $current := hasPrefix $.RelPermalink (relLangURL .URL) }} -->
                 {{ $page := $.Site.GetPage .URL }}
                 <li>
                     <a class="dropdown-item" href="{{ relLangURL .URL }}"

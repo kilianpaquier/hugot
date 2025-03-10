@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Close menu (if expanded) on scroll
+    // close menu (if expanded) on scroll
     document.addEventListener("scroll", () => {
         const menu = document.getElementById("btn-menu-nav")
         if (menu.attributes.getNamedItem("aria-expanded").value === "true") {
@@ -7,11 +7,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     })
 
-    // Setup tooltips
+    // setup tooltips
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
-    // Setup highlights copy buttons
+    // setup highlights copy buttons
     const highlights = document.getElementsByClassName("highlight")
     for (let i = 0; i < highlights.length; i++) {
         const highlight = highlights[i]

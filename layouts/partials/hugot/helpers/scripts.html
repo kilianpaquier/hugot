@@ -1,0 +1,26 @@
+{{ $merged := slice }}
+
+{{ range .js }}
+    {{ $url := . }}
+    {{ $opts := dict
+        "minify" hugo.IsProduction
+        "sourceMap" (cond hugo.IsProduction "" "external")
+        "targetPath" (printf "js/%s.js" (path.BaseName $url))
+    }}
+
+    {{ with try (resources.GetRemote $url) }}
+        {{ with .Err }}
+            {{ with try (resources.Get $url) }}
+                {{ with .Err }}
+                    {{ errorf "failed to get %s: %s" $url . }}
+                {{ else with .Value }}
+                    {{ $merged = $merged | append (. | js.Build $opts) }}
+                {{ end }}
+            {{ end }}
+        {{ else with .Value }}
+            {{ $merged = $merged | append (. | js.Build $opts) }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+
+{{ return $merged }}

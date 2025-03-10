@@ -2,8 +2,8 @@
 <div class="row gy-3 justify-content-center">
     <h2 class="col-12 text-center">{{ .Title | markdownify }}</h2>
     <div class="col-12 text-end">
-        {{ partial "content/time.html" . }}
-        {{ partial "content/card-image.html" .Params.image }}
+        {{ partial "hugot/content/time.html" . }}
+        {{ partial "hugot/content/card-image.html" .Params.image }}
     </div>
     <div class="col-12 col-md-11 col-xl-10">
         {{ .Content }}

@@ -2,7 +2,7 @@
 {{ define "card" }}
 <div class="col-12 col-md-10 col-lg-8 col-xl-6">
     <div class="card zoom h-100">
-        {{ partial "content/card-image.html" .Params.image }}
+        {{ partial "hugot/content/card-image.html" .Params.image }}
         <div class="card-body">
             <h5 class="card-title {{ if not .Description }}mb-0{{ end }}">{{ .Title | markdownify }}</h5>
 
@@ -13,7 +13,7 @@
             <a href="{{ .RelPermalink }}" class="stretched-link"></a>
         </div>
         <div class="card-footer">
-            {{ partial "content/time.html" . }}
+            {{ partial "hugot/content/time.html" . }}
         </div>
     </div>
 </div>

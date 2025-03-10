@@ -1,4 +1,0 @@
-{{ $gridCSS := resources.GetRemote (printf "https://cdn.jsdelivr.net/npm/bootstrap@%s/dist/css/bootstrap-grid.min.css" .Site.Params.bootstrap.version) }}
-
-{{ $bundleGridCSS := $gridCSS | minify | fingerprint }}
-<style>{{ $bundleGridCSS.Content | safeCSS }}</style>
