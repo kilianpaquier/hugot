@@ -5,21 +5,23 @@
 <link rel="icon" href="{{ .Site.Params.favicon | safeURL }}"> <!-- default value -->
 
 {{ $headStyles := dict
-    "css" (slice (printf "https://cdn.jsdelivr.net/npm/bootstrap@%s/dist/css/%s" .Site.Params.bootstrap.version (.Params.bootstrap.css | default .Site.Params.bootstrap.css)))
+    "css" (slice
+        (printf "https://cdn.jsdelivr.net/npm/bootstrap@%s/dist/css/%s" .Site.Params.bootstrap.version (.Params.bootstrap.css | default .Site.Params.bootstrap.css))
+        (cond (not .Params.animate.disabled | default (not .Site.Params.animate.disabled)) (printf "https://cdnjs.cloudflare.com/ajax/libs/animate.css/%s/animate.min.css" .Site.Params.animate.version) "")
+    )
     "scss" (slice "scss/main.scss")
 }}
 {{ $headCSS := partial "hugot/helpers/styles.html" $headStyles }}
 {{ $bundleHeadCSS := $headCSS | resources.Concat "css/bundle-head.css" | minify }}
-<style>{{ $bundleHeadCSS.Content | safeCSS }}</style>
+<link rel="stylesheet" href="{{ $bundleHeadCSS.RelPermalink }}" integrity="{{ $bundleHeadCSS.Data.Integrity }}" crossorigin="anonymous">
 
 {{ $headScripts := dict
     "js" (slice
         (cond (not .Params.theming.disabled | default (not .Site.Params.theming.disabled)) "js/theming.js" "")
-        | append .Site.Params.head.js
     )
 }}
 {{ $headJS := partial "hugot/helpers/scripts.html" $headScripts }}
-{{ $bundleHeadJS := $headJS | resources.Concat "js/bundle-head.js" | minify }}
-<script>{{ $bundleHeadJS.Content | safeJS }}</script>
+{{ $bundleHeadJS := $headJS | resources.Concat "js/bundle-head.js" | minify | fingerprint }}
+<script src="{{ $bundleHeadJS.RelPermalink }}" integrity="{{ $bundleHeadJS.Data.Integrity }}" crossorigin="anonymous"></script>
 
 <title>{{ .Title }} - {{ .Site.Title }}</title>

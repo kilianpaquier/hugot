@@ -12,7 +12,7 @@ params:
     version: 5.3.3
     css: bootstrap.min.css
 
-  # bootstrap classes to apply on main section and footer
+  # Bootstrap classes to apply on main section and footer
   # can be replaced / removed, however,
   # without at least one HTML tag with a container class, it may introduce bootstrap weird gutters behavior in home / blog
   class:
@@ -24,6 +24,12 @@ params:
     redirect: false
     # target homepage override
     url: /
+
+  # Enable animations (pre-defined ones like scrolltop)
+  # and get the hability to add more in your own code
+  animate:
+    disable: false
+    version: 4.1.1
 
   # Great to prefetch the next page if user is gonna go to (listen to mouse events on links)
   # https://instant.page/
@@ -39,6 +45,7 @@ params:
   # Scroll to Top button
   scrolltop:
     disabled: false
+    animated: true # animate must be enabled to get animation of scrolltop
 
   # System, dark and light mode theming
   theming:
@@ -48,11 +55,3 @@ params:
   # To have it work, just create a new page in version folder or files (for instance /my-post/0.1/index.md or /my-post/0.1.md)
   versioning:
     prefix: v # visual prefix to added on menu
-
-  # Additional head js files. Those must be in 'assets' folder
-  head:
-    js: []
-
-  # Additional end js files. Those must be in 'assets' folder
-  end:
-    js: []

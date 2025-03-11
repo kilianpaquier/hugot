@@ -4,8 +4,8 @@
 
 <head>
     {{ block "head" . }}{{ end }}
-    {{ partial "hugot/head.html" . }}
     {{ partial "hugot/internal/head.html" . }}
+    {{ partial "hugot/head.html" . }}
 </head>
 
 <body class="m-0 h-100 d-flex flex-column">
@@ -21,5 +21,6 @@
 </body>
 
 {{ partial "hugot/internal/end.html" . }}
+{{ partial "hugot/end.html" . }}
 
 </html>
