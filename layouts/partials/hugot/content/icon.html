@@ -10,8 +10,9 @@
     {{ $oldsvg := "<svg (.*)?>((.|\n)*)</svg>" }}
     {{ $newsvg := printf `<svg class="va-unset" height="%s" width="%s" ${1}>${2}</svg>` $size $size }}
 
+    {{ $base := path.BaseName .value }}
     {{ with .name }}
-        {{ $newsvg = printf `<svg class="va-unset %s" data-bs-toggle="tooltip" data-bs-title="%s" data-bs-placement="top" height="%s" width="%s" ${1}>${2}</svg>` (. | lower) . $size $size }}
+        {{ $newsvg = printf `<svg class="va-unset %s" data-bs-toggle="tooltip" data-bs-title="%s" data-bs-placement="top" height="%s" width="%s" ${1}>${2}</svg>` $base . $size $size }}
     {{ end }}
 
     {{ replaceRE $oldsvg $newsvg (.value | readFile) | safeHTML }}
@@ -20,8 +21,9 @@
     {{ $oldsvg := "<svg (.*)?>((.|\n)*)</svg>" }}
     {{ $newsvg := printf `<svg class="va-unset" height="%s" width="%s" ${1}>${2}</svg>` $size $size }}
 
+    {{ $base := path.BaseName .value }}
     {{ with .name }}
-        {{ $newsvg = printf `<svg class="va-unset %s" data-bs-toggle="tooltip" data-bs-title="%s" data-bs-placement="top" height="%s" width="%s" ${1}>${2}</svg>` (. | lower) . $size $size }}
+        {{ $newsvg = printf `<svg class="va-unset %s" data-bs-toggle="tooltip" data-bs-title="%s" data-bs-placement="top" height="%s" width="%s" ${1}>${2}</svg>` $base . $size $size }}
     {{ end }}
 
     {{ with resources.GetRemote .value }}
