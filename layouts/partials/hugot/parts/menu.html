@@ -1,4 +1,4 @@
-{{ if not .Params.menu.disabled | default (not .Site.Params.menu.disabled) }}
+{{ if not (.Params.menu.disabled | default .Site.Params.menu.disabled) }}
 <!-- Main menu -->
 <nav class="bottom align-self-end text-end">
     <!-- nav section -->
@@ -91,7 +91,7 @@
     <!-- nav bottom menu -->
     <button id="btn-menu-nav" class="btn btn-primary shadow rounded-circle d-print-none" type="button"
         data-bs-toggle="collapse" data-bs-target="#collapse-menu-nav" aria-expanded="false" aria-controls="collapse-menu-nav">
-        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24">
+        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="none" viewBox="0 0 24 24">
             <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14"/>
         </svg>
     </button>

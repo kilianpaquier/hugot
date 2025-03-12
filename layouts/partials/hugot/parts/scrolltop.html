@@ -1,5 +1,5 @@
-{{ if not .Params.scrolltop.disabled | default (not .Site.Params.scrolltop.disabled) }}
-{{ $class := cond (not .Params.menu.disabled | default (not .Site.Params.menu.disabled)) "bottom-scrolltop" "bottom" }}
+{{ if not (.Params.scrolltop.disabled | default .Site.Params.scrolltop.disabled) }}
+{{ $class := cond (.Params.menu.disabled | default .Site.Params.menu.disabled) "bottom" "bottom-scrolltop" }}
 <!-- Scroll To Top -->
 <nav class="{{ $class }} align-self-end">
     {{ $animated := cond (.Site.Params.scrolltop.animated) "animate__animated animate__faster" "" }}

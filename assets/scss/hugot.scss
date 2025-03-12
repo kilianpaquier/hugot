@@ -116,7 +116,7 @@ figure {
 
 #btn-menu-nav {
     border: none;
-    padding: 0.5rem;
+    padding: 0.55rem;
 }
 
 .dropdown-menu-nav {
@@ -132,12 +132,12 @@ figure {
 
 .bottom-scrolltop {
     @extend .bottom;
-    bottom: 4.125rem;
-    padding: 0 0.475rem;
+    bottom: 4.25rem;
+    padding: 0 .5rem;
 }
 
 #btn-scrolltop {
-    padding: 0.1rem;
+    padding: 0.2rem;
 }
 
 // DARK MODE
