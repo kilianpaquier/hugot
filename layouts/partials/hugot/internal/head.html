@@ -12,7 +12,7 @@
     "scss" (slice "scss/main.scss")
 }}
 {{ $headCSS := partial "hugot/helpers/styles.html" $headStyles }}
-{{ $bundleHeadCSS := $headCSS | resources.Concat "css/bundle-head.css" | minify }}
+{{ $bundleHeadCSS := $headCSS | resources.Concat "css/bundle-head.css" | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $bundleHeadCSS.RelPermalink }}" integrity="{{ $bundleHeadCSS.Data.Integrity }}" crossorigin="anonymous">
 
 {{ if not (.Params.theming.disabled | default .Site.Params.theming.disabled) }}
